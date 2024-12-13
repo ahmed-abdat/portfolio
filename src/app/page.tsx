@@ -28,7 +28,7 @@ export default function Page() {
               className="text-4xl font-bold tracking-tighter sm:text-6xl xl:text-7xl/none"
               yOffset={8}
             >
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 bg-clip-text text-transparent">
                 {DATA.name.split(" ")[0]}
               </span>{" "}
@@ -69,7 +69,7 @@ export default function Page() {
                 <p>
                   Passionate Full Stack Developer with expertise in building
                   modern web applications. As the founder of a web & mobile
-                  development agency, I've successfully delivered diverse
+                  development agency, I&apos;ve successfully delivered diverse
                   projects from real-time messaging apps to comprehensive
                   management platforms.
                 </p>

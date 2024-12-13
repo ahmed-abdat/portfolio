@@ -44,6 +44,10 @@ export const ResumeCard = ({
       href={href || "#"}
       className="block cursor-pointer"
       onClick={handleClick}
+      {...(href && href !== "#" ? {
+        target: "_blank",
+        rel: "noopener noreferrer"
+      } : {})}
     >
       <Card className="group relative overflow-hidden rounded-xl border bg-card p-4 transition-all duration-300 hover:bg-accent/50 sm:p-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start">

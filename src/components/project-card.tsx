@@ -51,7 +51,12 @@ export function ProjectCard({
         className
       )}
     >
-      <Link href={href || "#"} className="block cursor-pointer overflow-hidden">
+      <Link
+        href={href || "#"}
+        className="block cursor-pointer overflow-hidden"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div className="relative aspect-video w-full">
           {video && (
             <video
@@ -122,6 +127,7 @@ export function ProjectCard({
                     href={link?.href}
                     key={idx}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="transition-transform hover:scale-105"
                   >
                     <Badge
