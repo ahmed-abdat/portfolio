@@ -18,14 +18,14 @@ export function AboutSection({ className = "" }: AboutSectionProps) {
           </div>
           <div className="space-y-4">
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 bg-clip-text text-transparent text-center sm:text-left">
-              Full Stack Developer & Tech Entrepreneur
+              Full Stack Developer & Tech Enthusiast
             </h2>
             <div className="prose prose-lg max-w-full text-pretty font-sans text-muted-foreground/90 dark:prose-invert space-y-4 leading-relaxed">
               <p>
                 Passionate Full Stack Developer with expertise in building modern
-                web applications. As the founder of a web & mobile development
-                agency, I&apos;ve successfully delivered diverse projects from
-                real-time messaging apps to comprehensive management platforms.
+                web applications. I've successfully delivered diverse projects from
+                real-time messaging apps to comprehensive management platforms,
+                always focusing on creating efficient and user-friendly solutions.
               </p>
               <p>I specialize in:</p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 !mt-2 !list-none">
