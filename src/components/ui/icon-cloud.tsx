@@ -34,19 +34,20 @@ export const cloudProps: Omit<ICloud, "children"> = {
     maxSpeed: 0.04,
     minSpeed: 0.02,
     decel: 0.95,
-    radiusX: 0.9,
-    radiusY: 0.9,
-    radiusZ: 0.9,
+    radiusX: 1,
+    radiusY: 1,
+    radiusZ: 1,
     noSelect: true,
   },
 };
 
 export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
+  const isDark = theme === "dark";
   return renderSimpleIcon({
     icon,
     minContrastRatio: 1,
     bgHex: "#00000000",
-    size: 45,
+    size: 42,
     fallbackHex: icon.hex,
     aProps: {
       href: undefined,
@@ -54,8 +55,14 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
       rel: undefined,
       onClick: (e: any) => e.preventDefault(),
       style: {
-        color: `#${icon.hex}`,
-        fill: `#${icon.hex}`,
+        color:
+          isDark && ["nextdotjs", "github"].includes(icon.slug)
+            ? "#fff"
+            : `#${icon.hex}`,
+        fill:
+          isDark && ["nextdotjs", "github"].includes(icon.slug)
+            ? "#fff"
+            : `#${icon.hex}`,
       },
     },
   });
@@ -79,7 +86,7 @@ export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
     if (!data) return null;
 
     return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "light"),
+      renderCustomIcon(icon, theme || "light")
     );
   }, [data, theme]);
 

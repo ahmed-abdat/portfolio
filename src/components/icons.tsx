@@ -1,6 +1,5 @@
 import { GlobeIcon, MailIcon, LockIcon, DownloadIcon } from "lucide-react";
 import Image from "next/image";
-
 import {
   SiNextdotjs,
   SiTypescript,
@@ -10,7 +9,6 @@ import {
   SiLeaflet,
   SiHeadlessui,
   SiReacttable,
-  SiGithub,
   SiLinkedin,
   SiWhatsapp,
   SiReact,
@@ -20,86 +18,267 @@ import {
 } from "react-icons/si";
 import { BsCode, BsEyeFill } from "react-icons/bs";
 import { TbWaveSine } from "react-icons/tb";
+import { cn } from "@/lib/utils";
 
-export type IconProps = React.HTMLAttributes<SVGElement>;
+export type IconProps = React.SVGProps<SVGSVGElement>;
 
 const LocalIcon = ({
   src,
   alt,
+  className,
   ...props
-}: { src: string; alt: string } & IconProps) => {
+}: { src: string; alt: string; className?: string } & IconProps) => {
   const isSvg = src.endsWith(".svg");
 
   return (
-    <div className={`relative size-4 ${isSvg ? "dark:invert" : ""}`}>
+    <div className={cn(
+      "relative w-full h-full flex items-center justify-center",
+      className
+    )}>
       <Image
         src={`/icons/${src}`}
         alt={alt}
         fill
-        className={`object-contain ${
-          isSvg ? "dark:brightness-0 dark:invert" : ""
-        }`}
+        className={cn(
+          "object-contain w-full h-full",
+          isSvg && "dark:invert",
+          className
+        )}
+        style={{
+          maxWidth: "100%",
+          maxHeight: "100%"
+        }}
       />
     </div>
   );
 };
 
+const SVGIcon = ({
+  icon: Icon,
+  className,
+  ...props
+}: {
+  icon: React.ComponentType<IconProps>;
+  className?: string;
+} & Omit<IconProps, "ref" | "className">) => (
+  <div
+    className={cn(
+      "relative w-full h-full flex items-center justify-center",
+      className
+    )}
+  >
+    <Icon
+      {...props}
+      style={{ 
+        width: "100%", 
+        height: "100%", 
+        ...props.style 
+      }}
+    />
+  </div>
+);
+
 export const Icons = {
-  // Navigation and general icons
-  globe: (props: IconProps) => <GlobeIcon {...props} />,
-  email: (props: IconProps) => <MailIcon {...props} />,
-  lock: (props: IconProps) => <LockIcon {...props} />,
-  demo: (props: IconProps) => <BsEyeFill {...props} />,
-  download: (props: IconProps) => <DownloadIcon {...props} />,
+  // Navigation icons
+  globe: (props: IconProps) => <SVGIcon icon={GlobeIcon} className="dark:text-white" {...props} />,
+  email: (props: IconProps) => <SVGIcon icon={MailIcon} className="dark:text-white" {...props} />,
+  lock: (props: IconProps) => <SVGIcon icon={LockIcon} className="dark:text-white" {...props} />,
+  demo: (props: IconProps) => <SVGIcon icon={BsEyeFill} className="dark:text-white" {...props} />,
+  download: (props: IconProps) => <SVGIcon icon={DownloadIcon} className="dark:text-white" {...props} />,
+  code: (props: IconProps) => <SVGIcon icon={BsCode} className="dark:text-white" {...props} />,
 
   // Technology icons
-  code: (props: IconProps) => <BsCode {...props} />,
-  nextjs: (props: IconProps) => <SiNextdotjs {...props} />,
-  typescript: (props: IconProps) => <SiTypescript {...props} />,
   javascript: (props: IconProps) => (
     <LocalIcon src="js.png" alt="JavaScript" {...props} />
   ),
-  html: (props: IconProps) => <SiHtml5 {...props} />,
-  css: (props: IconProps) => <SiCss3 {...props} />,
-  react: (props: IconProps) => <SiReact {...props} />,
-  tailwind: (props: IconProps) => <SiTailwindcss {...props} />,
-  firebase: (props: IconProps) => <SiFirebase {...props} />,
+  typescript: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiTypescript} 
+      className="text-[#3178C6] dark:text-blue-400" 
+      {...props} 
+    />
+  ),
+  react: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiReact} 
+      className="text-[#61DAFB] dark:text-cyan-400" 
+      {...props} 
+    />
+  ),
+  nextjs: (props: IconProps) => (
+    <LocalIcon src="next.jpeg" alt="Next.js" {...props} />
+  ),
+  html: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiHtml5} 
+      className="text-[#E34F26] dark:text-orange-500" 
+      {...props} 
+    />
+  ),
+  css: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiCss3} 
+      className="text-[#1572B6] dark:text-blue-500" 
+      {...props} 
+    />
+  ),
+  tailwind: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiTailwindcss} 
+      className="text-[#06B6D4] dark:text-cyan-400" 
+      {...props} 
+    />
+  ),
+  shadcn: (props: IconProps) => (
+    <LocalIcon 
+      src="shadcn.svg" 
+      alt="Shadcn UI" 
+      className="dark:invert" 
+      {...props} 
+    />
+  ),
+  firebase: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiFirebase} 
+      className="text-[#FFCA28] dark:text-yellow-400" 
+      {...props} 
+    />
+  ),
+  c: (props: IconProps) => (
+    <LocalIcon 
+      src="C.svg" 
+      alt="C" 
+      className="dark:invert" 
+      {...props} 
+    />
+  ),
+  java: (props: IconProps) => (
+    <LocalIcon 
+      src="java.svg" 
+      alt="Java" 
+      className="dark:invert" 
+      {...props} 
+    />
+  ),
   framer: (props: IconProps) => (
     <LocalIcon src="Framer-Motion.png" alt="Framer Motion" {...props} />
   ),
   radix: (props: IconProps) => (
-    <LocalIcon src="radix.svg" alt="Radix UI" {...props} />
+    <LocalIcon 
+      src="radix.svg" 
+      alt="Radix UI" 
+      className="dark:invert" 
+      {...props} 
+    />
   ),
-  vite: (props: IconProps) => <SiVite {...props} />,
+  vite: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiVite} 
+      className="text-[#646CFF] dark:text-purple-400" 
+      {...props} 
+    />
+  ),
   zustand: (props: IconProps) => (
-    <LocalIcon src="zustand.svg" alt="Zustand" {...props} />
+    <LocalIcon 
+      src="zustand.svg" 
+      alt="Zustand" 
+      className="dark:invert" 
+      {...props} 
+    />
   ),
-  reactRouter: (props: IconProps) => <SiReactrouter {...props} />,
-  leaflet: (props: IconProps) => <SiLeaflet {...props} />,
-  headless: (props: IconProps) => <SiHeadlessui {...props} />,
-  tanstack: (props: IconProps) => <SiReacttable {...props} />,
-  translate: (props: IconProps) => (
-    <LocalIcon src="i18next.png" alt="i18next" {...props} />
-  ),
-  wavesurfer: (props: IconProps) => <TbWaveSine {...props} />,
-  git: (props: IconProps) => <LocalIcon src="git.png" alt="Git" {...props} />,
-  c: (props: IconProps) => <LocalIcon src="C.svg" alt="C" {...props} />,
   reactHookForm: (props: IconProps) => (
-    <LocalIcon src="react-hook-form.svg" alt="React Hook Form" {...props} />
+    <LocalIcon 
+      src="react-hook-form.svg" 
+      alt="React Hook Form" 
+      className="dark:invert" 
+      {...props} 
+    />
   ),
-  zod: (props: IconProps) => <LocalIcon src="zod.svg" alt="Zod" {...props} />,
+  zod: (props: IconProps) => (
+    <LocalIcon 
+      src="zod.svg" 
+      alt="Zod" 
+      className="dark:invert" 
+      {...props} 
+    />
+  ),
   vscode: (props: IconProps) => (
     <LocalIcon src="vs-code.png" alt="VS Code" {...props} />
   ),
   vercel: (props: IconProps) => (
-    <LocalIcon src="vercel.png" alt="Vercel" {...props} />
+    <LocalIcon 
+      src="vercel.svg" 
+      alt="Vercel" 
+      className="dark:invert" 
+      {...props} 
+    />
   ),
   copilot: (props: IconProps) => (
     <LocalIcon src="copilot.png" alt="GitHub Copilot" {...props} />
   ),
+  git: (props: IconProps) => (
+    <LocalIcon src="git.png" alt="Git" {...props} />
+  ),
+  translate: (props: IconProps) => (
+    <LocalIcon src="i18next.png" alt="i18next" {...props} />
+  ),
+  leaflet: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiLeaflet} 
+      className="dark:text-green-400" 
+      {...props} 
+    />
+  ),
+  headless: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiHeadlessui} 
+      className="dark:text-white" 
+      {...props} 
+    />
+  ),
+  tanstack: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiReacttable} 
+      className="dark:text-red-400" 
+      {...props} 
+    />
+  ),
+  reactRouter: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiReactrouter} 
+      className="dark:text-red-400" 
+      {...props} 
+    />
+  ),
+  wavesurfer: (props: IconProps) => (
+    <SVGIcon 
+      icon={TbWaveSine} 
+      className="dark:text-blue-400" 
+      {...props} 
+    />
+  ),
 
   // Social icons
-  github: (props: IconProps) => <SiGithub {...props} />,
-  linkedin: (props: IconProps) => <SiLinkedin {...props} />,
-  whatsapp: (props: IconProps) => <SiWhatsapp {...props} />,
+  github: (props: IconProps) => (
+    <LocalIcon 
+      src="github.svg" 
+      alt="GitHub" 
+      className="dark:invert" 
+      {...props} 
+    />
+  ),
+  linkedin: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiLinkedin} 
+      className="text-[#0A66C2] dark:text-blue-400" 
+      {...props} 
+    />
+  ),
+  whatsapp: (props: IconProps) => (
+    <SVGIcon 
+      icon={SiWhatsapp} 
+      className="text-[#25D366] dark:text-green-400" 
+      {...props} 
+    />
+  ),
 };

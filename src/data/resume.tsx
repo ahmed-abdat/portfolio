@@ -52,6 +52,17 @@ interface Social {
   navbar: boolean;
 }
 
+interface Education {
+  school: string;
+  href: string;
+  degree: string;
+  logoUrl: string;
+  start: string;
+  end: string;
+  description?: string;
+  achievements?: string[];
+}
+
 export const DATA = {
   name: "Ahmed Abdellahi Abdat",
   initials: "AA",
@@ -69,97 +80,112 @@ export const DATA = {
   skills: [
     {
       name: "JavaScript",
-      icon: <Icons.javascript className="size-4" />,
+      icon: <Icons.javascript />,
       iconSlug: "javascript",
     },
     {
       name: "TypeScript",
-      icon: <Icons.typescript className="size-4" />,
+      icon: <Icons.typescript />,
       iconSlug: "typescript",
     },
     {
+      name: "C",
+      icon: <Icons.c />,
+      iconSlug: "c",
+    },
+    {
+      name: "Java",
+      icon: <Icons.java />,
+      iconSlug: "java",
+    },
+    {
       name: "React",
-      icon: <Icons.react className="size-4" />,
+      icon: <Icons.react />,
       iconSlug: "react",
     },
     {
       name: "Next.js",
-      icon: <Icons.nextjs className="size-4" />,
+      icon: <Icons.nextjs />,
       iconSlug: "nextdotjs",
     },
     {
       name: "HTML5",
-      icon: <Icons.html className="size-4" />,
+      icon: <Icons.html />,
       iconSlug: "html5",
     },
     {
       name: "CSS3",
-      icon: <Icons.css className="size-4" />,
+      icon: <Icons.css />,
       iconSlug: "css3",
     },
     {
       name: "TailwindCSS",
-      icon: <Icons.tailwind className="size-4" />,
+      icon: <Icons.tailwind />,
       iconSlug: "tailwindcss",
     },
     {
+      name: "Shadcn UI",
+      icon: <Icons.shadcn />,
+      iconSlug: "shadcnui",
+    },
+    {
       name: "Firebase",
-      icon: <Icons.firebase className="size-4" />,
+      icon: <Icons.firebase />,
       iconSlug: "firebase",
     },
     {
       name: "Git",
-      icon: <Icons.git className="size-4" />,
+      icon: <Icons.git />,
       iconSlug: "git",
     },
     {
       name: "VS Code",
-      icon: <Icons.vscode className="size-4" />,
+      icon: <Icons.vscode />,
       iconSlug: "visualstudiocode",
     },
     {
       name: "Vercel",
-      icon: <Icons.vercel className="size-4" />,
+      icon: <Icons.vercel />,
       iconSlug: "vercel",
     },
     {
       name: "GitHub",
-      icon: <Icons.github className="size-4" />,
+      icon: <Icons.github />,
       iconSlug: "github",
     },
     {
       name: "Framer Motion",
-      icon: <Icons.framer className="size-4" />,
+      icon: <Icons.framer />,
       iconSlug: "framer",
     },
     {
       name: "Radix UI",
-      icon: <Icons.radix className="size-4" />,
+      icon: <Icons.radix />,
       iconSlug: "radixui",
     },
     {
       name: "Zustand",
-      icon: <Icons.zustand className="size-4" />,
+      icon: <Icons.zustand />,
       iconSlug: "zustand",
     },
     {
       name: "React Hook Form",
-      icon: <Icons.reactHookForm className="size-4" />,
+      icon: <Icons.reactHookForm />,
       iconSlug: "reacthookform",
     },
     {
       name: "Zod",
-      icon: <Icons.zod className="size-4" />,
+      icon: <Icons.zod />,
       iconSlug: "zod",
     },
     {
       name: "i18next",
-      icon: <Icons.translate className="size-4" />,
+      icon: <Icons.translate />,
       iconSlug: "i18next",
     },
     {
       name: "GitHub Copilot",
-      icon: <Icons.copilot className="size-4" />,
+      icon: <Icons.copilot />,
       iconSlug: "githubcopilot",
     },
   ],
@@ -206,8 +232,8 @@ export const DATA = {
   },
   work: [
     {
-      company: "Web & Mobile Development Agency",
-      href: "#",
+      company: "Rimcode Agency",
+      href: "https://rimecode.vercel.app/",
       badges: ["Founder"],
       location: "Tunisia",
       title: "Founder & Full Stack Developer",
@@ -229,7 +255,7 @@ export const DATA = {
         "Architected and implemented a comprehensive football league management platform featuring both public-facing website and secure admin dashboard. Built with Next.js 14, integrated with Firebase for real-time updates, and implemented advanced data tables using TanStack Table.",
     },
     {
-      company: "SMTD (Société Mauritanienne de Traitement des Déchets)",
+      company: "SMTD",
       href: "https://smtde.vercel.app",
       location: "Tunisia",
       title: "Full Stack Developer",
@@ -259,16 +285,20 @@ export const DATA = {
       logoUrl: "/fsb-logo.jpg",
       start: "2023",
       end: "2025",
+      description:
+        "Currently pursuing a Master's degree in electronics and automation systems, ranking 1st in M1 with focus on industrial automation and embedded systems research projects.",
     },
     {
-      school: "Université de Nouakchott Al-Asariyia",
+      school: "Faculté des Sciences et Techniques",
       href: "#",
-      degree: "Bachelor's in Electronics, Electrotechnics, and Automation",
+      degree: "Licence in Electronics, Electrotechnics, and Automation",
       logoUrl: "/una-logo.jpg",
       start: "2020",
       end: "2023",
+      description:
+        "Completed Licence degree at the Faculty of Sciences and Technology, University of Nouakchott Al-Asariyia. Graduated as major of the promotion, earning a Mauritanian government scholarship to pursue Master's studies in Tunisia.",
     },
-  ],
+  ] as readonly Education[],
   projects: [
     {
       title: "MBI-RIM Platform",
@@ -278,18 +308,18 @@ export const DATA = {
       description:
         "A leading construction group platform specializing in prefabricated buildings and construction materials.",
       technologies: [
-        { name: "Next.js 14", icon: <Icons.nextjs className="size-4" /> },
-        { name: "TypeScript", icon: <Icons.typescript className="size-4" /> },
-        { name: "Firebase", icon: <Icons.firebase className="size-4" /> },
-        { name: "Next-intl", icon: <Icons.translate className="size-4" /> },
-        { name: "Framer Motion", icon: <Icons.framer className="size-4" /> },
-        { name: "Radix UI", icon: <Icons.radix className="size-4" /> },
+        { name: "Next.js 14", icon: <Icons.nextjs /> },
+        { name: "TypeScript", icon: <Icons.typescript /> },
+        { name: "Firebase", icon: <Icons.firebase /> },
+        { name: "Next-intl", icon: <Icons.translate /> },
+        { name: "Framer Motion", icon: <Icons.framer /> },
+        { name: "Radix UI", icon: <Icons.radix /> },
       ],
       links: [
         {
           type: "View Project",
           href: "https://www.mbirim.com/fr",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe />,
         },
       ],
       image: "/projects/mbi-rim.png",
@@ -302,18 +332,18 @@ export const DATA = {
       description:
         "National leader in integrated waste management, SMTD transforms environmental challenges into sustainable opportunities. Built with internationalization support (French/Arabic).",
       technologies: [
-        { name: "Next.js 14", icon: <Icons.nextjs className="size-4" /> },
-        { name: "Leaflet Maps", icon: <Icons.leaflet className="size-4" /> },
-        { name: "Next-intl", icon: <Icons.translate className="size-4" /> },
-        { name: "Firebase", icon: <Icons.firebase className="size-4" /> },
-        { name: "HeadlessUI", icon: <Icons.headless className="size-4" /> },
-        { name: "Framer Motion", icon: <Icons.framer className="size-4" /> },
+        { name: "Next.js 14", icon: <Icons.nextjs /> },
+        { name: "Leaflet Maps", icon: <Icons.leaflet /> },
+        { name: "Next-intl", icon: <Icons.translate /> },
+        { name: "Firebase", icon: <Icons.firebase /> },
+        { name: "HeadlessUI", icon: <Icons.headless /> },
+        { name: "Framer Motion", icon: <Icons.framer /> },
       ],
       links: [
         {
           type: "View Project",
           href: "https://smtde.vercel.app",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe />,
         },
       ],
       image: "/projects/smtd.png",
@@ -326,22 +356,22 @@ export const DATA = {
       description:
         "A comprehensive football league management platform featuring a public website and a secure admin dashboard. The platform manages the AESMB Football League 2024-2025.",
       technologies: [
-        { name: "Next.js 14", icon: <Icons.nextjs className="size-4" /> },
-        { name: "Firebase", icon: <Icons.firebase className="size-4" /> },
-        { name: "TanStack Table", icon: <Icons.tanstack className="size-4" /> },
-        { name: "Radix UI", icon: <Icons.radix className="size-4" /> },
-        { name: "Framer Motion", icon: <Icons.framer className="size-4" /> },
+        { name: "Next.js 14", icon: <Icons.nextjs /> },
+        { name: "Firebase", icon: <Icons.firebase /> },
+        { name: "TanStack Table", icon: <Icons.tanstack /> },
+        { name: "Radix UI", icon: <Icons.radix /> },
+        { name: "Framer Motion", icon: <Icons.framer /> },
       ],
       links: [
         {
           type: "View Project",
           href: "https://aesmb.vercel.app",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe />,
         },
         {
           type: "Admin Portal",
           href: "https://aesmb.vercel.app/dashboard",
-          icon: <Icons.lock className="size-3" />,
+          icon: <Icons.lock />,
         },
       ],
       image: "/projects/aesmb.png",
@@ -354,28 +384,28 @@ export const DATA = {
       description:
         "A real-time messaging application with authentication, friend lists, and real-time chat features.",
       technologies: [
-        { name: "Vite", icon: <Icons.vite className="size-4" /> },
-        { name: "Firebase", icon: <Icons.firebase className="size-4" /> },
-        { name: "Zustand", icon: <Icons.zustand className="size-4" /> },
+        { name: "Vite", icon: <Icons.vite /> },
+        { name: "Firebase", icon: <Icons.firebase /> },
+        { name: "Zustand", icon: <Icons.zustand /> },
         {
           name: "WaveSurfer.js",
-          icon: <Icons.wavesurfer className="size-4" />,
+          icon: <Icons.wavesurfer />,
         },
         {
           name: "React Router",
-          icon: <Icons.reactRouter className="size-4" />,
+          icon: <Icons.reactRouter />,
         },
       ],
       links: [
         {
           type: "View Project",
           href: "https://whatesapp.vercel.app",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe />,
         },
         {
           type: "Source Code",
           href: "https://github.com/ahmed-abdat/whatesapp-clone",
-          icon: <Icons.github className="size-3" />,
+          icon: <Icons.github />,
         },
       ],
       image: "/projects/whatsapp-clone.png",
@@ -388,27 +418,27 @@ export const DATA = {
       description:
         "A platform allowing citizens to report urban issues such as illegal constructions and sanitary problems. Won 3rd place in the AIESEC hackathon.",
       technologies: [
-        { name: "Next.js 14", icon: <Icons.nextjs className="size-4" /> },
-        { name: "TypeScript", icon: <Icons.typescript className="size-4" /> },
-        { name: "Firebase", icon: <Icons.firebase className="size-4" /> },
-        { name: "Radix UI", icon: <Icons.radix className="size-4" /> },
-        { name: "Zustand", icon: <Icons.zustand className="size-4" /> },
+        { name: "Next.js 14", icon: <Icons.nextjs /> },
+        { name: "TypeScript", icon: <Icons.typescript /> },
+        { name: "Firebase", icon: <Icons.firebase /> },
+        { name: "Radix UI", icon: <Icons.radix /> },
+        { name: "Zustand", icon: <Icons.zustand /> },
         {
           name: "React Hook Form",
-          icon: <Icons.reactHookForm className="size-4" />,
+          icon: <Icons.reactHookForm />,
         },
-        { name: "Zod", icon: <Icons.zod className="size-4" /> },
+        { name: "Zod", icon: <Icons.zod /> },
       ],
       links: [
         {
           type: "View Project",
           href: "https://eco-citye.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe />,
         },
         {
           type: "Source Code",
           href: "https://github.com/ahmed-abdat/eco-city",
-          icon: <Icons.github className="size-3" />,
+          icon: <Icons.github />,
         },
       ],
       image: "/projects/eco-city.png",
@@ -425,7 +455,7 @@ export const DATA = {
       links: [
         {
           title: "Project",
-          icon: <Icons.globe className="h-4 w-4" />,
+          icon: <Icons.globe />,
           href: "https://eco-citye.vercel.app/",
         },
       ],
